@@ -12,6 +12,7 @@ module.exports = {
             { text: "首页", link: '/home/' },
             { text: "Angular", link: '/Angular/' },
             { text: "Vue", link: '/Vue/' },
+            { text: "Web", link: '/web/' },
             { text: "Github", link: 'https://github.com/huangmin1992/myBlog' }
         ],
         sidebar: {
@@ -23,6 +24,11 @@ module.exports = {
             ],
             '/Vue/': [
                 ''
+            ],
+            '/web/': [
+                ['css','Css'],
+                ['javascript','Javascript'],
+                ['html','Html']
             ]
         },
         sidebarDepth: 2 // 侧边栏显示2级为标题导航

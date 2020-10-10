@@ -41,7 +41,7 @@ cd -
  "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "deploy": "bash deploy.sh"
+    "deploy": "npm run docs:build && bash deploy.sh"
   },
 ```
 3.然后运行,注意:需要在右键启动git bash 运行此命令;
