@@ -10,18 +10,22 @@ module.exports = {
         displayAllHeaders: true, // 显示所有界面的表填链接
         nav: [ // 导航栏配置
             { text: "首页", link: '/home/' },
+            { text: "Angular", link: '/Angular/' },
+            { text: "Vue", link: '/Vue/' },
             { text: "Github", link: 'https://github.com/huangmin1992/myBlog' }
         ],
         sidebar: {
             '/home/': [
-                '',
-                ['one', 'vuepress部署到github-pages']
+                ''
             ],
-            '/bar/': [
-                '',
-                'two'
+            '/Angular/': [
+                ''
+            ],
+            '/Vue/': [
+                ''
             ]
         },
-        sidebarDepth: 2 // 侧边栏显示2级
+        sidebarDepth: 2 // 侧边栏显示2级为标题导航
     }
 }
+// 参考解决方案  https://b.himnt.top/blog/base/

@@ -1,7 +1,11 @@
 # vuepress 部署到github-pages
 
+[vuepress官网](https://www.vuepress.cn/guide/)
+
 ### 首先在根目录下建立一个文件：deploy.sh
 ______________________
+
+
 1.文件内容如下：
 ```sh
 #!/usr/bin/env sh
