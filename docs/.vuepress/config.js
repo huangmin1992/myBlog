@@ -1,7 +1,9 @@
 module.exports = {
     title: 'huangmin\'s blog',
     description: '记录',
-    head: [], // 注入到当前页面的html<head>中的标签 eg:heade:[['link',{rel:'icon',href:'/logo.jpg'}]]
+    head: [
+        ['link', { rel: "icon", type: 'image/x-icon', href: './favicon.ico' }]
+    ], // 注入到当前页面的html<head>中的标签 eg:heade:[['link',{rel:'icon',href:'/logo.jpg'}]]
     base: '/myBlog/', // 这是部署到GitHub先关的配置
     markdown: {
         lineNumbers: false // 代码块显示行号
@@ -26,9 +28,9 @@ module.exports = {
                 ''
             ],
             '/web/': [
-                ['css','Css'],
-                ['javascript','Javascript'],
-                ['html','Html']
+                ['css', 'Css'],
+                ['javascript', 'Javascript'],
+                ['html', 'Html']
             ]
         },
         sidebarDepth: 2 // 侧边栏显示2级为标题导航
