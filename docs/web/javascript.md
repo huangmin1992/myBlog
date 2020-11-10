@@ -161,4 +161,58 @@ js中： formate(new Date(), 'yyyy-MM-DD hh:mm:ss')
     });
     reader.readAsText(res, 'utf-8');
 
+``` 
+
+## Debounce（防抖） and Throttle（节流）
+
+```javascript
+// Debounce
+
+const debounce = (fn,delay)=>{
+    return args=>{
+        clearTimeout(fn.id);
+        fn.id = setTimeout(()=>{
+            fn.call(this,args);
+        },delay)
+    }
+}
+// 调用
+const test = debounce(fn,1000);
+
+// Throttle
+
+const throttle = (fn,delay)=>{
+    return  args=>{
+        if(fn.id){
+            return;
+        }
+        fn.id = setTimeout(()=>{
+            fn.call(this,args);
+            clearTimeout(fn.id);
+            fn.id = null;
+        },delay)
+    }
+}
+// 调用
+const test = throttle(fn,1000);
+
+// throttle 加入时间戳
+const throttle = (fn,delay)=>{
+    let las = 0;
+    return args =>{
+        let now = Date.now();
+        if(last && now < last + delay){
+            clearTimeout(fn.id);
+            fn.id = setTimeout(()=>{
+                fn.call(this,args);
+                last = now;
+            },delay);
+            
+        }else{
+            fn.call(this,args);
+            last = now;
+        }
+    }
+}
+
 ```
