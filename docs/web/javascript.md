@@ -176,6 +176,31 @@ const debounce = (fn,delay)=>{
         },delay)
     }
 }
+
+const debounce = (func, wait, immediate) => {
+            let timeOut;
+            return function () {
+                const context = this;
+                const args = arguments;
+                if (timeOut) {
+                    clearTimeout(timeOut);
+                }
+                if (immediate) {
+                    let callNow = !timeOut;
+                    timeOut = setTimeout(() => {
+                        timeOut = null;
+                    }, wait || 500)
+                    if (callNow) {
+                        func.apply(context, args);
+                    }
+                } else {
+                    timeOut = setTimeout(() => {
+                        func.apply(context, args);
+                    }, wait || 500);
+                }
+
+            }
+        }
 // 调用
 const test = debounce(fn,1000);
 
@@ -193,6 +218,7 @@ const throttle = (fn,delay)=>{
         },delay)
     }
 }
+
 // 调用
 const test = throttle(fn,1000);
 
@@ -215,4 +241,58 @@ const throttle = (fn,delay)=>{
     }
 }
 
+ // 及时触发，停止触发
+const throttle = (func, wait) => {
+    let args, context, timeout, previous = 0;
+    const later = () => {
+        previous = +new Date();
+        timeout = null; // 清除闭包
+        func.apply(context, args);
+    }
+    return function () {
+        context = this;
+        args = arguments;
+        let now = +new Date();
+        // 下次触发func剩余的时间
+        let remaining = wait - (now - previous);
+        // 如果没有剩余或者需改了系统时间
+        if (remaining <= 0 || remaining > wait) {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            previous = now;
+            func.apply(context, args);
+        } else if (!timeout) {
+            timeout = setTimeout(later, wait);
+        }
+    }
+}
+
+```
+
+## 分时函数
+
+#### 如果一次向加载上千条数据，dom可能卡顿，分时函数可分批进行
+
+``` javascript
+const timeChunk = (arr, fn, count) => {
+    let t, len = arr.length;
+    const start = () => {
+        for (let i = 0; i < Math.min(count || 1, len); i++) {
+            fn(arr.shift());
+        }
+    };
+    return ()=>{
+        t = setInterval(()=>{
+            if(arr.length === 0){
+                return clearInterval(t);
+            }
+            start();
+        },200)
+    }
+}
+const renderData = timeChunk(arr,()=>{
+    // 回调函数，在里面执行操作
+},count);
 ```
