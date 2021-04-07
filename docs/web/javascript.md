@@ -283,16 +283,46 @@ const timeChunk = (arr, fn, count) => {
             fn(arr.shift());
         }
     };
-    return ()=>{
-        t = setInterval(()=>{
-            if(arr.length === 0){
+    return () => {
+        t = setInterval(() => {
+            if (arr.length === 0) {
                 return clearInterval(t);
             }
             start();
-        },200)
+        }, 200)
     }
 }
-const renderData = timeChunk(arr,()=>{
+const renderData = timeChunk(arr, () => {
     // 回调函数，在里面执行操作
-},count);
+}, count);
+```
+
+## hmtl字符转义与反转义
+
+``` javascript
+// 普通标签转义
+const html2Escape = (params: string) => {
+    const obj = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        '"': '&quot;'
+    }
+    return params.replace(/[<>&"]/g, (t) => {
+        return obj[c];
+    })
+}
+// 转义符换成普通标签
+const escape2Html = (params: string) => {
+    const obj = {
+        'lt': '<',
+        'gt': '>',
+        'nbsp': ' ',
+        'amp': '&',
+        'quot': '"'
+    };
+    return params.replace(/&(lt|gt|nbsp|amp|quot);/ig, (all, t) => {
+        return obj[t];
+    })
+}
 ```
