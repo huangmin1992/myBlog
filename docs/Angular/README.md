@@ -358,3 +358,168 @@ const routes: Routes = [{
 
 }]
 ```
+
+## 路由守卫CanActivate
+
+#### 路由守卫：在进入或离开某路由时，用于判断是否可以离开、进入某路由；<code>return true</code>代表可以进入当前路由；<code>return false</code>代表不可以进入当前路由，但可以进入自定义路由.
+
+#### 路由守卫与路由的关系：路由守卫只能用于路由项上；路由守卫可以应用于过个路由项；每个路由项可以有多个路由守卫；
+
+路由守卫通过如下接口实现：
+
+* <code>canActivate</code>：控制是否允许进入路由。（通过 return false/true判定）
+* <code>canActivateChild</code>：等同canActivate，只不过针对的是所有子路由。
+* <code>canDeactivate</code>：控制是否允许离开路由。
+* <code>canLoad</code>：控制是否允许颜值加载整个模块。
+
+#### 当需要某些条件/某个身份才能进入的路由，就可以使用路由守卫属性了。
+
+#### 路由守卫的使用
+
+* 首先新建一个<code>service</code>, name:<code>GuardService</code>
+
+``` 
+
+ng g service common/guard
+```
+
+* 路由守卫代码
+
+``` javascript
+import {
+    Injectable
+} from '@angular/core';
+import {
+    CanActivate,
+    Router
+} from '@angular/router';
+
+@Injectable()
+export class GuardService implements CanActivate {
+    constructor(private router: Router, private _http: HttpClient) {}
+    getIsAdmin() {
+        return new Promise((resolve) => {
+            this._http.get('/user/isAdmin').subscribe((resp: boolean) => {
+                resolve(resp);
+            });
+        });
+    }
+    // 进入路由守卫
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable < boolean > | Promise < boolean > | boolean {
+        return this.getIsAdmin().then((isAdmin) => {
+            if (isAdmin) { // 如果是管理员, 可以进入当前路由；
+                return true;
+            } else {
+
+                // 如果不是管理员，不能进入当前路由，进入手动导航的ordinary路由；
+                this.router.navigateByUrl('/ordinary');
+                return false;
+            }
+        });
+    }
+}
+```
+
+* 注册路由文件, <code>app.module.ts</code>
+
+``` javascript
+@NgModule({
+    declarations: [AppComponent],
+    providers: [
+        GuardService // 注入路由守卫服务
+    ],
+    bootstrap: [AppComponent]
+})
+```
+
+* 给对应的路由项配置路由守卫，eg：<code>app.routing.ts</code>
+
+``` javascript
+// 当导航到Home时，需要进入路由守卫的canActivate类进行判断是否可以进入此路由
+
+// 什么时候需要在路由项上加路由守卫？？当需要某些条件/某个身份才能进入的路由，这时需要在路由项上加入路由守卫属性
+
+export const routes: Routes = [{
+    path: '',
+    component: AppComponent,
+    children: [{
+            path: '',
+            redirectTo: 'home',
+            pathMatch: 'full'
+        },
+        {
+            path: 'home',
+            component: HomeComponent,
+            canActivate: [GuardService] // 给对应的路由添加守卫
+        }
+    ]
+}, ];
+@NgModule({
+    imports: [RouterModule.forRoot(routes, {
+        useHash: true
+    })],
+    exports: [RouterModule]
+})
+export class RoutingModule {}
+```
+
+## 监听页面长时间未操作，自动退出登录界面
+
+``` typescript
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {ElectronService} from './electron.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class WatcherOperationService {
+  lastTime: number;
+  currentTime: number;
+  timeOut = 30 * 60 * 1000; // 设置超时时间： 30分
+
+  constructor(
+    private router: Router,
+    private electronS: ElectronService
+  ) {
+  }
+
+  initWatcher() {
+    this.lastTime = new Date().getTime();
+    this.currentTime = new Date().getTime();
+
+    window.onload = () => {
+      window.addEventListener('mousedown', () => this._setLastTime());
+      window.addEventListener('mousewheel', () => this._setLastTime());
+      window.addEventListener('keydown', () => this._setLastTime());
+    };
+
+    /* 定时器 间隔30秒检测是否长时间未操作页面 */
+    window.setInterval(() => this._checkTimeout(), 30000);
+  }
+
+  private _setLastTime() {
+    // 鼠标按下记录最后一次操作时间
+    localStorage.setItem('lastTime', new Date().getTime() + '');
+  }
+
+  private _checkTimeout() {
+    this.currentTime = new Date().getTime(); // 更新当前时间
+    this.lastTime = +localStorage.getItem('lastTime');
+    if (this.currentTime - this.lastTime > this.timeOut
+      && localStorage.getItem('u_ak')
+      && localStorage.getItem('u_sk')
+    ) { // 判断是否超时
+      localStorage.removeItem('u_ak');
+      localStorage.removeItem('u_sk');
+      localStorage.removeItem('lastTime');
+      if (this.electronS.isElectron()) {
+        this.electronS.openLoginWindow();
+      } else {
+        this.router.navigate(['login']);
+      }
+    }
+  }
+}
+
+```
