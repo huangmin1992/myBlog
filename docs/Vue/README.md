@@ -43,7 +43,7 @@ Vue.use(loading); // 插件引用
 npm install babel-polyfill es6-promise -S
 ```
 
-+ 然后在<code>main.js</code>中引入<code>es6-promise</code>, ps: 在最顶上引入
+* 然后在<code>main.js</code>中引入<code>es6-promise</code>, ps: 在最顶上引入
 
 ``` 
 
@@ -52,7 +52,7 @@ import promise from 'es6-promise';
 promise.polyfill();
 ```
 
-+ 在<code>webpack.base.conf.js</code>, <code>entry</code>入口文件添加babel-polyfill; 
+* 在<code>webpack.base.conf.js</code>, <code>entry</code>入口文件添加babel-polyfill; 
 
 ``` 
 
@@ -60,11 +60,16 @@ entry:{
     app:['babel-polyfill','src/main.js']
 }
 ```
-+ es6转es5,在<code>.babelrc</code>文件中添加；
-```
+
+* es6转es5, 在<code>.babelrc</code>文件中添加；
+
+``` 
+
 npm install babel-preset-es2015
 ```
-```
+
+``` 
+
 {
   "presets": [
     ["env", {
@@ -195,33 +200,117 @@ module.exports = {
     }
 }
 ```
+
 ## vuex 
-+ <code>webpack</code>前端项目自动化<code>require.context</code>
-```javascript
-  
-import Vue from 'vue'
-import Vuex from 'vuex'
-import getters from './getters'
 
-Vue.use(Vuex)
+* <code>webpack</code>前端项目自动化<code>require.context</code>
 
-// https://webpack.js.org/guides/dependency-management/#requirecontext
-const modulesFiles = require.context('./modules', true, /\.js$/)
+``` javascript
+  import Vue from 'vue'
+  import Vuex from 'vuex'
+  import getters from './getters'
 
-// you do not need `import app from './modules/app'`
-// it will auto require all vuex module from modules file
-const modules = modulesFiles.keys().reduce((modules, modulePath) => {
-  // set './app.js' => 'app'
-  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
-  const value = modulesFiles(modulePath)
-  modules[moduleName] = value.default
-  return modules
-}, {})
+  Vue.use(Vuex)
 
-const store = new Vuex.Store({
-  modules,
-  getters
-})
+  // https://webpack.js.org/guides/dependency-management/#requirecontext
+  const modulesFiles = require.context('./modules', true, /\.js$/)
 
-export default store
+  // you do not need `import app from './modules/app'`
+  // it will auto require all vuex module from modules file
+  const modules = modulesFiles.keys().reduce((modules, modulePath) => {
+      // set './app.js' => 'app'
+      const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
+      const value = modulesFiles(modulePath)
+      modules[moduleName] = value.default
+      return modules
+  }, {})
+
+  const store = new Vuex.Store({
+      modules,
+      getters
+  })
+
+  export default store
+```
+
+## Vue自定义插件
+
+* 在<code>src/plugin</code>文件夹下新建插件js<code>message.js</code>
+
+``` javascript
+export default {
+    install(app, options) {
+        const showMessage = (res) => {
+            console.log('设置自定义插件方法' + res);
+        }
+        const content = {
+            count: 1,
+            str: '自定义插件属性',
+            type: 'string'
+        }
+        console.log(app)
+        // 添加全局混入
+        app.mixin({
+            mounted() {
+                console.log('这里是设置全局混入，这会在每个组件的mounted生命周期里面');
+            }
+        })
+        // 添加全局指令
+        app.directive('bg', {
+            mounted: function(el, binding) {
+                console.log(el);
+                console.log(binding)
+                el.style.background = binding.value.background;
+            }
+        })
+        // 把新建的方法和属性绑定到全局
+        app.showMessage = app.config.globalProperties.$showMessage = showMessage;
+        app.content = app.config.globalProperties.$content = content;
+    }
+}
+```
+
+* 在<code>main.js</code>中引入插件
+
+``` javascript
+  import {
+      createApp
+  } from 'vue'
+  import App from './App.vue'
+  import './index.css'
+  import axios from 'axios';
+  import _ from 'loadsh';
+  import message from './plugins/message';
+  const app = createApp(App);
+  app.config.globalProperties.$axios = axios;
+  app.config.globalProperties.$loadsh = _;
+  app.use(message);
+  app.mount('#app')
+```
+
+* 在<code>.vue</code>文件中使用
+
+``` 
+<template>
+  <div id="app">
+    <div v-bg="{ color: '#fff', background: 'pink' }">5444646546</div>
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: "App",
+  data() {
+    return {
+      test: "background",
+      bg: "pink",
+    };
+  },
+  mounted() {
+    console.log(this.$content);
+  },
+};
+</script>
+
 ```
