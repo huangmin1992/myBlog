@@ -291,6 +291,7 @@ export default {
 * 在<code>.vue</code>文件中使用
 
 ``` 
+
 <template>
   <div id="app">
     <div v-bg="{ color: '#fff', background: 'pink' }">5444646546</div>
@@ -313,4 +314,17 @@ export default {
 };
 </script>
 
+```
+
+## Vue.$nextTick()异步执行回调
+
+* <code>this.$nextTick()</code>将在下次dom渲染更新结束之后执行回调，在修改数据后立即执行这个方法；
+
+``` javascript
+/*
+ * 这个是在v-show，组件下，tree选中重置的例子，在点击隐藏，再显示后，执行回调，重置数据
+ */
+this.$nextTick(() => {
+    this.$refs.dataTree.setCheckedKeys([]);
+});
 ```
