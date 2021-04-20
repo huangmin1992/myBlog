@@ -523,3 +523,42 @@ export class WatcherOperationService {
 }
 
 ```
+## angular 自定义组件库
++ 执行命令
+
+```javascript
+//ng g library <库名> --prefix <组件名前缀>
+ng g library my-lib --prefix <my-prefix>
+```
++ 执行<code>ng g library my-lib --prefix \<my-prefix\></code>命令后,会在项目中创建<code>projects/my-lib</code>
+
+![库项目接口](../.vuepress/public/l-1.png)
+
++ 前缀在组件中呈现方式
+
+![my-prefix](../.vuepress/public/l-2.png)
+
++ 组件库在<code>projects/my-lib/src/public-api.ts</code>中导出
+
+![导出方式](../.vuepress/public/l-3.png)
+
++ 组件库在项目中引入，比如我们引入<code>alert</code>组件,需在<code>app.module.ts</code>中引入;
+
+![项目中引入组件module](../.vuepress/public/l-4.png)
+
++ 在<code>app.component.html</code>中使用组件
+
+![项目中引入组件module](../.vuepress/public/l-5.png)
+![项目中引入组件module](../.vuepress/public/l-6.png)
+
+#### 将我们的库发布到npm步骤
+
+1. 首先注册npm账号,链接地址<https://www.npmjs.com/>;
+2. 在<code>CMD</code>中执行命令<code>npm login</code>登录npm账号；
+3. 执行命令<code>npm whoami</code>查看登录名
+4. 执行命令<code>npm config get registry</code>查看发布地址
+5. 发布命令<code>npm publish</code>,如失败，可尝试<code>npm publish --access=publish</code>,在<https://www.npmjs.com/settings/huangyouchun/packages>可查看自己刚发布的包
+6. 取消发布 
+    + 强制撤销发布,<code>npm unpublish 包名 --force</code>
+    + 强制删除，<code>npm unpublish --force</code>
+    + 删除包指定版本号,<code>npm unpublish packageName@1.10</code>
