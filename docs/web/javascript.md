@@ -326,3 +326,85 @@ const escape2Html = (params: string) => {
     })
 }
 ```
+
+## <code>targetWindow.postMessage()</code>
+
+* 解决父子页面传信，界面与iframe跨域传信问题
+* MAN中有详解：[MDN中有详解](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
+* <code>targetWindow.postMessage(message, targetOrigin, [transfer])</code>; <code>targetWindow</code>: 字向上传递消息时，可以用<code>window.parenttargetOrigin</code>: 可写同源域名，也可写具体域名地址，也可用‘*’号；
+
+![这是一张图片](../.vuepress/public/p-1.png)
+
+1. 首先建立页面index.html,代码如下：
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父页面</title>
+</head>
+
+<body>
+    <button onclick="handleEvent()">向子页面发送信息</button>
+    <p>我是父页面</p>
+    <iframe src="iframe.html" id="iframe"></iframe>
+    <script>
+        function handleEvent() {
+            // iframe的id
+            var f = document.getElementById('iframe');
+            // 触发子页面的监听事件
+            f.contentWindow.postMessage('close', '*');
+        }
+
+        // 注册消息事件监听，接受子元素给的数据
+        window.addEventListener('message', (e) => {
+            console.log(e.data);
+        }, false);
+    </script>
+</body>
+
+</html>
+```
+
+2. 建立iframe.html子页面
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子页面</title>
+</head>
+
+<body>
+    <button onclick="handleEvent()">向父页面发送信息</button>
+    <p>我是子页面</p>
+    <script>
+        // 注册消息事件监听，接受父元素给的数据
+        window.addEventListener('message', (e) => {
+            console.log(e.data);
+        }, false);
+        window.addEventListener('click', handleEvent, false);
+        window.addEventListener('mousemove', handleEvent, false);
+        window.addEventListener('keydown', handleEvent, false);
+        window.addEventListener('mousedown', handleEvent, false);
+
+        function handleEvent() {
+            // 触发父页面的监听事件
+            window.parent.postMessage(+new Date(), '*');
+        }
+    </script>
+</body>
+
+</html>
+```
+监听iframe界面操作，向上发送时间戳，更新动作。
+![结果图](../.vuepress/public/p-2.png)
+这样就可以完美解决监听不到iframe窗体动作的问题了~~~
