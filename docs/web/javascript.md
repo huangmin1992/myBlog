@@ -327,7 +327,7 @@ const escape2Html = (params: string) => {
 }
 ```
 
-## <code>targetWindow.postMessage()</code>
+## 解决跨域通信<code>targetWindow.postMessage()</code>
 
 * 解决父子页面传信，界面与iframe跨域传信问题
 * MAN中有详解：[MDN中有详解](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)
