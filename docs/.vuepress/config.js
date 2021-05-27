@@ -28,11 +28,41 @@ module.exports = {
                 ''
             ],
             '/web/': [
-                ['css', 'Css'],
-                ['javascript', 'Javascript'],
-                ['html', 'Html']
+                {
+                    title: 'Css',
+                    collapsable: true,
+                    children: [
+                        ['css', 'Css'],
+                    ]
+                },
+                {
+                    title: 'Javascript',
+                    collapsable: true,
+                    children: [
+                        ['javascript', 'Javascript'],
+                    ]
+                },
+                {
+                    title: 'Regex',
+                    collapsable: true,
+                    children: [
+                        ['regex', 'Regex'],
+                    ]
+                },
+                {
+                    title: 'Html',
+                    collapsable: true,
+                    children: [
+                        ['html', 'Html'],
+                    ]
+                }
+                // ['css', 'Css'],
+                // ['javascript', 'Javascript'],
+                // ['regex', 'regex'],
+                // ['html', 'Html']
             ]
         },
+
         sidebarDepth: 2 // 侧边栏显示2级为标题导航
     }
 }

@@ -1,6 +1,6 @@
 ## 入口：web/h5
 
-``` javascript
+```javascript
 export const browserRedirect = () => {
     let sUserAgent = navigator.userAgent.toLowerCase();
     let isMobile = false;
@@ -19,7 +19,7 @@ export const browserRedirect = () => {
 
 ## 时间格式化
 
-``` javascript
+```javascript
 export function formatDate(date, fmt) {
     var o = {
         "M+": date.getMonth() + 1, //月份
@@ -51,7 +51,7 @@ js中： formate(new Date(), 'yyyy-MM-DD hh:mm:ss')
 
 ## 复制到剪贴板
 
-``` javascript
+```javascript
   // 复制链接
   copyLinkHandler() {
       const input = document.querySelector('#private-link-code');
@@ -64,7 +64,7 @@ js中： formate(new Date(), 'yyyy-MM-DD hh:mm:ss')
 
 ## 点击开启新标签窗口
 
-``` javascript
+```javascript
  /**
 
   + @param { string } url
@@ -161,7 +161,7 @@ js中： formate(new Date(), 'yyyy-MM-DD hh:mm:ss')
     });
     reader.readAsText(res, 'utf-8');
 
-``` 
+```
 
 ## Debounce（防抖） and Throttle（节流）
 
@@ -275,7 +275,7 @@ const throttle = (func, wait) => {
 
 #### 如果一次向加载上千条数据，dom可能卡顿，分时函数可分批进行
 
-``` javascript
+```javascript
 const timeChunk = (arr, fn, count) => {
     let t, len = arr.length;
     const start = () => {
@@ -299,7 +299,7 @@ const renderData = timeChunk(arr, () => {
 
 ## hmtl字符转义与反转义
 
-``` javascript
+```javascript
 // 普通标签转义
 const html2Escape = (params: string) => {
     const obj = {
@@ -337,7 +337,7 @@ const escape2Html = (params: string) => {
 
 1. 首先建立页面index.html,代码如下：
 
-``` html
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -372,7 +372,7 @@ const escape2Html = (params: string) => {
 
 2. 建立iframe.html子页面
 
-``` html
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -405,6 +405,31 @@ const escape2Html = (params: string) => {
 
 </html>
 ```
+
 监听iframe界面操作，向上发送时间戳，更新动作。
+
 ![结果图](../.vuepress/public/p-2.png)
+
 这样就可以完美解决监听不到iframe窗体动作的问题了~~~
+
+## 数组切片功能
+
+```javascript
+const arrChunk = (arr, size) => {
+    if (arr.length === 0) {
+        return [];
+    }
+    const tempArr = [];
+    const chunkLen = Math.ceil(arr.length / size);
+    let last = 0;
+    for (let i = 0; i < chunkLen; i++) {
+        if (size * i >= arr.length) {
+            last = arr.length;
+        } else {
+            last = size * i + size;
+        }
+        tempArr.push(arr.slice(size * i, last));
+    }
+    return tempArr;
+}
+```
