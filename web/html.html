@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>图形登录验证 | hyc&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.6.0">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <meta name="description" content="记录">
+    <link rel="preload" href="/myBlog/assets/css/0.styles.8ed9cba0.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.56c6331d.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.6d4ef463.js" as="script"><link rel="preload" href="/myBlog/assets/js/17.74a060e3.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.a13a07de.js"><link rel="prefetch" href="/myBlog/assets/js/11.fb27a24b.js"><link rel="prefetch" href="/myBlog/assets/js/12.afa4fad4.js"><link rel="prefetch" href="/myBlog/assets/js/13.4d08237b.js"><link rel="prefetch" href="/myBlog/assets/js/14.3b05382e.js"><link rel="prefetch" href="/myBlog/assets/js/15.74943c40.js"><link rel="prefetch" href="/myBlog/assets/js/16.84564673.js"><link rel="prefetch" href="/myBlog/assets/js/18.0d1bf447.js"><link rel="prefetch" href="/myBlog/assets/js/19.7bc6222f.js"><link rel="prefetch" href="/myBlog/assets/js/20.3ee243cd.js"><link rel="prefetch" href="/myBlog/assets/js/21.90cdfcdb.js"><link rel="prefetch" href="/myBlog/assets/js/22.3c7aae0a.js"><link rel="prefetch" href="/myBlog/assets/js/23.746ba400.js"><link rel="prefetch" href="/myBlog/assets/js/24.ba0ae8e2.js"><link rel="prefetch" href="/myBlog/assets/js/3.7bc81702.js"><link rel="prefetch" href="/myBlog/assets/js/4.3d6b49c3.js"><link rel="prefetch" href="/myBlog/assets/js/5.48711a92.js"><link rel="prefetch" href="/myBlog/assets/js/6.8910e455.js"><link rel="prefetch" href="/myBlog/assets/js/7.8effeca1.js"><link rel="prefetch" href="/myBlog/assets/js/8.0081451b.js"><link rel="prefetch" href="/myBlog/assets/js/9.0847ae97.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.8ed9cba0.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><!----> <span class="site-name">hyc's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/home/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/Angular/" class="nav-link">
+  Angular
+</a></div><div class="nav-item"><a href="/myBlog/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><a href="/myBlog/web/" class="nav-link router-link-active">
+  Web
+</a></div><div class="nav-item"><a href="https://github.com/huangmin1992/myBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="outbound-link-title" role="img" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><title id="outbound-link-title">(opens new window)</title> <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/home/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/Angular/" class="nav-link">
+  Angular
+</a></div><div class="nav-item"><a href="/myBlog/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><a href="/myBlog/web/" class="nav-link router-link-active">
+  Web
+</a></div><div class="nav-item"><a href="https://github.com/huangmin1992/myBlog" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="outbound-link-title" role="img" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><title id="outbound-link-title">(opens new window)</title> <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Regex</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Html</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/web/html.html" aria-current="page" class="active sidebar-link">Html</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="图形登录验证"><a href="#图形登录验证" class="header-anchor">#</a> 图形登录验证</h1> <ul><li>html部分代码</li></ul> <div class="language-html extra-class"><pre class="language-html"><code>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>slider-img-container<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>captcha<span class="token punctuation">&quot;</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">=&quot;</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span> relative</span><span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><ul><li>css部分代码</li></ul> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">.slider-img-container </span><span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 320px<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> -48px<span class="token punctuation">;</span>
+  <span class="token property">z-index</span><span class="token punctuation">:</span> 100<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 0 4px #ddd<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+
+  <span class="token selector">#msg </span><span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">a:link,
+  a:visited,
+  a:hover,
+  a:active </span><span class="token punctuation">{</span>
+    <span class="token property">margin-left</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #0366D6<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.block </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 310px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+    <span class="token property">margin-top</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #f7f9fa<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #45494c<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #e4e7eb<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_active .slider </span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 38px<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> -1px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #1991FA<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_active .sliderMask </span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 38px<span class="token punctuation">;</span>
+    <span class="token property">border-width</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_success .slider </span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 38px<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> -1px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #52CCBA<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #52CCBA <span class="token important">!important</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_success .sliderMask </span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 38px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #52CCBA<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #D2F4EF<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_success .sliderIcon </span><span class="token punctuation">{</span>
+    <span class="token property">background-position</span><span class="token punctuation">:</span> 0 0 <span class="token important">!important</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_fail .slider </span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 38px<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> -1px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #f57a7a<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #f57a7a <span class="token important">!important</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_fail .sliderMask </span><span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 38px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #f57a7a<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #fce1e1<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_fail .sliderIcon </span><span class="token punctuation">{</span>
+    <span class="token property">background-position</span><span class="token punctuation">:</span> 0 -83px <span class="token important">!important</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderContainer_active .sliderText,
+  .sliderContainer_success .sliderText,
+  .sliderContainer_fail .sliderText </span><span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderMask </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 0 solid #1991FA<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #D1E9FE<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.slider </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 0 3px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+    <span class="token property">transition</span><span class="token punctuation">:</span> background .2s linear<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.slider:hover </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #1991FA<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.slider:hover .sliderIcon </span><span class="token punctuation">{</span>
+    <span class="token property">background-position</span><span class="token punctuation">:</span> 0 -13px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.sliderIcon </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 13px<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token string">'assets/imgs/login/geetest-icons.png'</span><span class="token punctuation">)</span> 0 -26px<span class="token punctuation">;</span>
+    <span class="token property">background-size</span><span class="token punctuation">:</span> 34px 471px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.operationIconsContainer </span><span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 5px 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.refreshIcon, .closeSliderIcon </span><span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 34px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 34px<span class="token punctuation">;</span>
+    <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.refreshIcon </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token string">'assets/imgs/login/refresh.png'</span><span class="token punctuation">)</span> center no-repeat<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.closeSliderIcon </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token string">'assets/imgs/login/close.png'</span><span class="token punctuation">)</span> center no-repeat<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>js部分代码<code>greet.js</code></li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">window</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> l <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token comment">// 滑块边长</span>
+        r <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token comment">// 滑块半径</span>
+        w <span class="token operator">=</span> <span class="token number">310</span><span class="token punctuation">,</span> <span class="token comment">// canvas宽度</span>
+        h <span class="token operator">=</span> <span class="token number">155</span><span class="token punctuation">,</span> <span class="token comment">// canvas高度</span>
+        <span class="token constant">PI</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token constant">L</span> <span class="token operator">=</span> l <span class="token operator">+</span> r <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 滑块实际边长</span>
+    <span class="token keyword">function</span> <span class="token function">getRandomNumberByRange</span><span class="token punctuation">(</span><span class="token parameter">start<span class="token punctuation">,</span> end</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span> <span class="token operator">+</span> start<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">createCanvas</span><span class="token punctuation">(</span><span class="token parameter">width<span class="token punctuation">,</span> height</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'canvas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        canvas<span class="token punctuation">.</span>width <span class="token operator">=</span> width<span class="token punctuation">;</span>
+        canvas<span class="token punctuation">.</span>height <span class="token operator">=</span> height<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> canvas<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">createImg</span><span class="token punctuation">(</span><span class="token parameter">onload</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> img <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        img<span class="token punctuation">.</span>crossOrigin <span class="token operator">=</span> <span class="token string">&quot;Anonymous&quot;</span><span class="token punctuation">;</span>
+        img<span class="token punctuation">.</span>onload <span class="token operator">=</span> onload<span class="token punctuation">;</span>
+        img<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            img<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token function">getRandomImg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        img<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token function">getRandomImg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> img<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token parameter">tagName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>tagName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">addClass</span><span class="token punctuation">(</span><span class="token parameter">tag<span class="token punctuation">,</span> className</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        tag<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>className<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token parameter">tag<span class="token punctuation">,</span> className</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        tag<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>className<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">getRandomImg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">'./assets/imgs/login/'</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'.jpg?image='</span> <span class="token operator">+</span> <span class="token function">getRandomNumberByRange</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 本地图片地址</span>
+        <span class="token comment">// return 'https://picsum.photos/300/150/?image=' + getRandomNumberByRange(0, 100); // 网络图片</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> operation<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ctx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">moveTo</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x <span class="token operator">+</span> l <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span>x <span class="token operator">+</span> l <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> y <span class="token operator">-</span> r <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token constant">PI</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x <span class="token operator">+</span> l <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x <span class="token operator">+</span> l<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x <span class="token operator">+</span> l<span class="token punctuation">,</span> y <span class="token operator">+</span> l <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span>x <span class="token operator">+</span> l <span class="token operator">+</span> r <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> y <span class="token operator">+</span> l <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token constant">PI</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x <span class="token operator">+</span> l<span class="token punctuation">,</span> y <span class="token operator">+</span> l <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x <span class="token operator">+</span> l<span class="token punctuation">,</span> y <span class="token operator">+</span> l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token operator">+</span> l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'#fff'</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">[</span>operation<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y <span class="token operator">+</span> l <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> <span class="token number">1.5</span> <span class="token operator">*</span> <span class="token constant">PI</span><span class="token punctuation">,</span> <span class="token number">0.5</span> <span class="token operator">*</span> <span class="token constant">PI</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span>globalCompositeOperation <span class="token operator">=</span> <span class="token string">&quot;xor&quot;</span><span class="token punctuation">;</span>
+        ctx<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">jigsaw</span> <span class="token punctuation">{</span>
+        <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> success<span class="token punctuation">,</span> fail<span class="token punctuation">,</span> close</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>el <span class="token operator">=</span> el<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>success <span class="token operator">=</span> success<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>fail <span class="token operator">=</span> fail<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>close <span class="token operator">=</span> close<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initDOM</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initImg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">bindEvents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">initDOM</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token function">createCanvas</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 画布</span>
+            <span class="token keyword">const</span> block <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">cloneNode</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 滑块</span>
+            <span class="token keyword">const</span> sliderContainer <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> operationIconsContainer <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> refreshIcon <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> closeSliderIcon <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> sliderMask <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> slider <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> sliderIcon <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'span'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> text <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'span'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            block<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'block'</span><span class="token punctuation">;</span>
+            sliderContainer<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'sliderContainer'</span><span class="token punctuation">;</span>
+            operationIconsContainer<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'operationIconsContainer'</span><span class="token punctuation">;</span>
+            refreshIcon<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'refreshIcon'</span><span class="token punctuation">;</span>
+            closeSliderIcon<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'closeSliderIcon'</span><span class="token punctuation">;</span>
+            sliderMask<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'sliderMask'</span><span class="token punctuation">;</span>
+            slider<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'slider'</span><span class="token punctuation">;</span>
+            sliderIcon<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'sliderIcon'</span><span class="token punctuation">;</span>
+            text<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'向右滑动滑块填充拼图'</span><span class="token punctuation">;</span>
+            text<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'sliderText'</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> el <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>el<span class="token punctuation">;</span>
+            el<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            el<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>block<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            slider<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>sliderIcon<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sliderMask<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>slider<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sliderContainer<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>sliderMask<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sliderContainer<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            el<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>sliderContainer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            operationIconsContainer<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>closeSliderIcon<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            operationIconsContainer<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>refreshIcon<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// el.appendChild(refreshIcon);</span>
+            el<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>operationIconsContainer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                canvas<span class="token punctuation">,</span>
+                block<span class="token punctuation">,</span>
+                sliderContainer<span class="token punctuation">,</span>
+                refreshIcon<span class="token punctuation">,</span>
+                closeSliderIcon<span class="token punctuation">,</span>
+                slider<span class="token punctuation">,</span>
+                sliderMask<span class="token punctuation">,</span>
+                sliderIcon<span class="token punctuation">,</span>
+                text<span class="token punctuation">,</span>
+                canvasCtx<span class="token operator">:</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'2d'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                blockCtx<span class="token operator">:</span> block<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'2d'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">initImg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> img <span class="token operator">=</span> <span class="token function">createImg</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>canvasCtx<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>blockCtx<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">const</span> y <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">-</span> r <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                <span class="token keyword">const</span> ImageData <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>blockCtx<span class="token punctuation">.</span><span class="token function">getImageData</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token constant">L</span><span class="token punctuation">,</span> <span class="token constant">L</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>block<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token constant">L</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>blockCtx<span class="token punctuation">.</span><span class="token function">putImageData</span><span class="token punctuation">(</span>ImageData<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>img <span class="token operator">=</span> img<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 随机创建滑块的位置</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token function">getRandomNumberByRange</span><span class="token punctuation">(</span><span class="token constant">L</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">,</span> w <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token constant">L</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token function">getRandomNumberByRange</span><span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">+</span> r <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> h <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token constant">L</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">draw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>canvasCtx<span class="token punctuation">,</span> <span class="token string">'fill'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">draw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>blockCtx<span class="token punctuation">,</span> <span class="token string">'clip'</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">clean</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>canvasCtx<span class="token punctuation">.</span><span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>blockCtx<span class="token punctuation">.</span><span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> w<span class="token punctuation">,</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>block<span class="token punctuation">.</span>width <span class="token operator">=</span> w<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">bindEvents</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>el<span class="token punctuation">.</span><span class="token function-variable function">onselectstart</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>refreshIcon<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>closeSliderIcon<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>close <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">;</span>
+            <span class="token keyword">let</span> originX<span class="token punctuation">,</span> originY<span class="token punctuation">,</span> trail <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                isMouseDown <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>slider<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousedown'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                originX <span class="token operator">=</span> e<span class="token punctuation">.</span>x<span class="token punctuation">,</span> originY <span class="token operator">=</span> e<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+                isMouseDown <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isMouseDown<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">const</span> moveX <span class="token operator">=</span> e<span class="token punctuation">.</span>x <span class="token operator">-</span> originX<span class="token punctuation">;</span>
+                <span class="token keyword">const</span> moveY <span class="token operator">=</span> e<span class="token punctuation">.</span>y <span class="token operator">-</span> originY<span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>moveX <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> moveX <span class="token operator">+</span> <span class="token number">38</span> <span class="token operator">&gt;=</span> w<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>slider<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> moveX <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+                <span class="token keyword">let</span> blockLeft <span class="token operator">=</span> <span class="token punctuation">(</span>w <span class="token operator">-</span> <span class="token number">40</span> <span class="token operator">-</span> <span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>w <span class="token operator">-</span> <span class="token number">40</span><span class="token punctuation">)</span> <span class="token operator">*</span> moveX<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>block<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> blockLeft <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+                <span class="token function">addClass</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sliderContainer<span class="token punctuation">,</span> <span class="token string">'sliderContainer_active'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>sliderMask<span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> moveX <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+                trail<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>moveY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isMouseDown<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                isMouseDown <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>x <span class="token operator">==</span> originX<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sliderContainer<span class="token punctuation">,</span> <span class="token string">'sliderContainer_active'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>trail <span class="token operator">=</span> trail<span class="token punctuation">;</span>
+                <span class="token keyword">const</span> <span class="token punctuation">{</span>
+                    spliced<span class="token punctuation">,</span>
+                    TuringTest
+                <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">verify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>spliced<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>TuringTest<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token function">addClass</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sliderContainer<span class="token punctuation">,</span> <span class="token string">'sliderContainer_success'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">this</span><span class="token punctuation">.</span>success <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        <span class="token function">addClass</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sliderContainer<span class="token punctuation">,</span> <span class="token string">'sliderContainer_fail'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">this</span><span class="token punctuation">.</span>text<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'再试一次'</span><span class="token punctuation">;</span>
+                        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// alert(&quot;验证失败&quot;);</span>
+                    <span class="token function">addClass</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sliderContainer<span class="token punctuation">,</span> <span class="token string">'sliderContainer_fail'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">this</span><span class="token punctuation">.</span>fail <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment">//验证失败后，1秒后重新加载图片</span>
+                    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">verify</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>trail<span class="token punctuation">;</span> <span class="token comment">// 拖动时y轴的移动距离</span>
+            <span class="token keyword">const</span> average <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span> <span class="token operator">/</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">// 平均值</span>
+            <span class="token keyword">const</span> deviations <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">x</span> <span class="token operator">=&gt;</span> x <span class="token operator">-</span> average<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 偏差数组</span>
+            <span class="token keyword">const</span> stddev <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>deviations<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>square<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span> <span class="token operator">/</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 标准差</span>
+            <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>block<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                spliced<span class="token operator">:</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>left <span class="token operator">-</span> <span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">,</span>
+                TuringTest<span class="token operator">:</span> average <span class="token operator">!==</span> stddev<span class="token punctuation">,</span> <span class="token comment">// 只是简单的验证拖动轨迹，相等时一般为0，表示可能非人为操作</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>sliderContainer<span class="token punctuation">.</span>className <span class="token operator">=</span> <span class="token string">'sliderContainer'</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>slider<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>block<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>sliderMask<span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">clean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>img<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token function">getRandomImg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    window<span class="token punctuation">.</span>jigsaw <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token function-variable function">init</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">element<span class="token punctuation">,</span> success<span class="token punctuation">,</span> fail<span class="token punctuation">,</span> close</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">new</span> <span class="token class-name">jigsaw</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> success<span class="token punctuation">,</span> fail<span class="token punctuation">,</span> close<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>调用</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code> jigsaw<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'captcha'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+     <span class="token comment">// 滑动成功</span>
+     <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+         <span class="token comment">// 登录逻辑处理</span>
+     <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+     <span class="token comment">// 点击关闭图标按钮操作逻辑</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ul><li>结果</li></ul> <p><img src="/myBlog/assets/img/greetest.9fcf51af.png" alt="结果图"></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myBlog/web/regex.html" class="prev">
+        Regex
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myBlog/assets/js/app.56c6331d.js" defer></script><script src="/myBlog/assets/js/2.6d4ef463.js" defer></script><script src="/myBlog/assets/js/17.74a060e3.js" defer></script>
+  </body>
+</html>
